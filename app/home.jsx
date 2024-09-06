@@ -5,12 +5,20 @@ import AddressSearch from "../components/AddressSearch";
 
 const Home = () => {
 
-    return (
-        <View>
-          <AddressSearch />
-        </View>
-      
-      );
+	return (
+		<View>
+			<AddressSearch />
+			{/* Create a 3 tab named like, su, gazoz, diğer */}
+
+			<View style={{ flexDirection: "row", justifyContent: "space-between" }}>
+				<Text>Like</Text>
+				<Text>Su</Text>
+				<Text>Gazoz</Text>
+				<Text>Diğer</Text>
+			</View>
+		</View>
+
+	);
 }
 
 

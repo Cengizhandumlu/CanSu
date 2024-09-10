@@ -110,11 +110,13 @@ const Home = () => {
 	}
 
 	const ProductItem = ({product}) => {
-		<View style={styles.productContainer}>
-			<Image source={{uri: product.img_url}} style={styles.productImage} />
-			<Text style={styles.productName}>{product.name}</Text>
-			<Text style={styles.productPrice	}>{product.price}</Text>
-		</View>
+		return (
+			<View style={styles.productContainer}>
+				<Image source={{uri: product.img_url}} style={styles.productImage} />
+				<Text style={styles.productName}>{product.name}</Text>
+				<Text style={styles.productPrice	}>{product.price}</Text>
+			</View>
+		)
 	}
 
 	const productGrid = () => {
@@ -144,11 +146,11 @@ const Home = () => {
 				productGrid()
 			}
 			{
-				currentPage === "maden_suyu" &&
+				currentPage === "maden_suyu" && 
 				productGrid()
 			}
 			{
-				currentPage === "diger" &&
+				currentPage === "diğer" && 
 				productGrid()
 			}
 		</View>
@@ -162,10 +164,10 @@ const styles = StyleSheet.create({
    	productContainer: {
 	flex: 1,
 	margin: 5,
-	backgroundColor: "#fff",
+	backgroundColor: "pink",
 	padding: 10,
 	borderradius: 5,
-	shadowcolor: "#000",
+	shadowcolor: "red",
 	shadowopoacity: 0.2,
 	shadowradius: 1.41,
 	elevation: 2,

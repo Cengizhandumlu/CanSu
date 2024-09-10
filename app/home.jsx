@@ -80,25 +80,25 @@ const Home = () => {
 		},
 		{
 			name: "Sade Maden Suyu",
-			type: "maden suyu",
+			type: "maden_suyu",
 			img_url: "https://www.sakasu.com.tr/files/uploads/1668585223saka%20soda%20sade-min.png?v=234",
 			price: "10 TL"
 		},
 		{
 			name: "Limon Aromalı Maden Suyu",
-			type: "maden suyu",
+			type: "maden_suyu",
 			img_url: "https://www.sakasu.com.tr/files/uploads/1668585239saka%20soda%20limon-min.png?v=234",
 			price: "15 TL"
 		},
 		{
 			name: "Elma Aromalı Maden Suyu",
-			type: "maden suyu",
+			type: "maden_suyu",
 			img_url: "https://www.sakasu.com.tr/files/uploads/1668585200saka%20soda%20elma-min.png?v=234",
 			price: "15 TL"
 		},
 		{
 			name: "Karpuz-Çilek Aromalı Maden Suyu",
-			type: "maden suyu",
+			type: "maden_suyu",
 			img_url: "https://www.sakasu.com.tr/files/uploads/1668585515saka%20soda%20sise%20karpuz%20%C3%A7ilek%20aromali.png?v=234",
 			price: "15 TL"
 		},
@@ -124,10 +124,11 @@ const Home = () => {
 
 		return (
 			<FlatList
-				data={product}
+				data={product.filter(p => p.type === currentPage)}
 				renderItem={({item}) => <ProductItem product={item} />}
 				keyExtractor={item => item.name}
 				numColumns={numberOfColumns}
+				contentContainerStyle={{paddingBottom: 100}}
 			/>
 		)
 	}
@@ -136,10 +137,10 @@ const Home = () => {
 		<View>
 			<AddressSearch />
 			{/* Tablerin olduğu kısım. Bu kısma styling lazım. */}
-			<View style={{ flexDirection: "row", justifyContent: "space-between" }}>
-				<Text onPress={() => handlePageChange("su")}>Su</Text>
-				<Text onPress={() => handlePageChange("maden_suyu")}>Maden Suyu</Text>
-				<Text>Diğer</Text>
+			<View style={{ flexDirection: "row", justifyContent: "space-between", padding:5 }}>
+				<Text onPress={() => handlePageChange("su")} style={{marginLeft:12, fontFamily:"Arial", textAlign:"left", fontSize:14, fontWeight:"bold", color: currentPage === "su" ? "red" : "black"}}>Su</Text>
+				<Text onPress={() => handlePageChange("maden_suyu")} style={{textAlign:"center", fontFamily:"Arial", fontSize:14, fontWeight:"bold", color: currentPage === "maden_suyu" ? "red" : "black"}}>Maden Suyu</Text>
+				<Text onPress={() => handlePageChange("diğer")} style={{marginRight:12, fontFamily:"Arial", fontSize:14, fontWeight:"bold", color: currentPage === "diğer" ? "red" : "black"}}> Diğer</Text>
 			</View>
 			{
 				currentPage === "su" && 
@@ -159,34 +160,37 @@ const Home = () => {
 }
 const styles = StyleSheet.create({
 	listContainer: {
-		padding: 10,
+		padding: 5,
 	},
    	productContainer: {
 	flex: 1,
-	margin: 5,
+	margin: 10,
 	backgroundColor: "pink",
-	padding: 10,
+	padding: 5,
 	borderradius: 5,
 	shadowcolor: "red",
 	shadowopoacity: 0.2,
-	shadowradius: 1.41,
 	elevation: 2,
 	alignitems: "center", 
 	},
 	productImage: {
 	width: Dimensions.get("window").width / 2 - 20,
 	height: 150,
-	resaizeMode: "contain",
+	resizeMode: "stretch",
 	},
 	productName: {
+	textAlign: "center",
 	fontSize: 16,
+	fontFamily: "Arial",
 	fontweight: "bold",
 	marginTop: 10,
 	},	
 	productPrice: {
+	textAlign: "center",
 	fontsize: 16,
+	fontFamily: "Arial",
 	fontweight: "bold",
-	color: "#00f",
+	color: "red",
 	marginTop: 5,
 	},
 });

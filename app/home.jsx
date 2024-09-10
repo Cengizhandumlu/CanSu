@@ -1,5 +1,5 @@
 import React, {useState} from "react";
-import { FlatList, View, Image, Text, Dimensions } from "react-native";
+import { FlatList, View, Image, Text, Dimensions, StyleSheet } from "react-native";
 
 import AddressSearch from "../components/AddressSearch";
 
@@ -147,10 +147,14 @@ const Home = () => {
 				currentPage === "maden_suyu" &&
 				productGrid()
 			}
+			{
+				currentPage === "diger" &&
+				productGrid()
+			}
 		</View>
 	);
 
-
+}
 const styles = StyleSheet.create({
 	listContainer: {
 		padding: 10,
@@ -186,4 +190,3 @@ const styles = StyleSheet.create({
 });
 
 export default Home;
-

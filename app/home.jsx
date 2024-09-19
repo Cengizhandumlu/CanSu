@@ -1,6 +1,5 @@
 import React, {useState} from "react";
 import { FlatList, View, Image, Text, Dimensions, StyleSheet } from "react-native";
-
 import AddressSearch from "../components/AddressSearch";
 
 // interface productInformation {

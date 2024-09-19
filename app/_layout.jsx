@@ -1,30 +1,27 @@
-import { View, Text } from 'react-native'
-import React from 'react'
-import { Tabs } from 'expo-router'
+import { Tabs } from 'expo-router';
+import { Ionicons } from '@expo/vector-icons'; 
 
-const _layout = () => {
-    return ( 
-        <Tabs>
-            <Tabs.Screen
-                name="home"
-                options={{
-                title: 'Home'
-                }}
-            />
-            <Tabs.Screen
-                name="profile"
-                options={{
-                title: 'Profile'
-                }}
-            />
-            <Tabs.Screen
-                name="sepet"
-                options={{
-                title: 'Sepet'
-                }}
-            />
-        </Tabs>
-    )
+export default function Layout() {
+
+    return (
+        <Tabs
+            screenOptions={({ route }) => ({
+                tabBarIcon: ({ focused, color, size }) => { 
+                    let iconName;
+                    if (route.name === 'home') {
+                        iconName = focused ? 'home' : 'home-outline';
+                    }else if (route.name === 'sepet') {
+                        iconName = focused ? 'cart' : 'cart-outline';
+                    }
+                    else if (route.name === 'profile') {
+                        iconName = focused ? 'person' : 'person-outline';
+                    } 
+                    return <Ionicons name={iconName} size={size} color={color} />;
+                },
+
+                tabBarActiveTintColor: 'red',
+                tabBarInactiveTintColor: 'black',
+            })}
+        />
+    );
 }
-
-export default _layout
